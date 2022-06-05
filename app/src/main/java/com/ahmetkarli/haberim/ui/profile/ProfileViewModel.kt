@@ -1,4 +1,4 @@
-package com.ahmetkarli.haberim
+package com.ahmetkarli.haberim.ui.profile
 
 import androidx.lifecycle.ViewModel
 

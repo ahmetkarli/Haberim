@@ -1,4 +1,4 @@
-package com.ahmetkarli.haberim
+package com.ahmetkarli.haberim.ui.profile
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ahmetkarli.haberim.R
 
 class ProfileFragment : Fragment() {
 
