@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ahmetkarli.haberim.databinding.FragmentTopHeadlinesBinding
 import com.ahmetkarli.haberim.ui.topheadlines.adapter.CategoryAdapter
+import com.ahmetkarli.haberim.ui.topheadlines.adapter.NewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,6 +17,7 @@ class TopHeadlinesFragment : Fragment() {
 
     private val viewModel: TopHeadlinesViewModel by viewModels()
     private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var newsAdapter: NewsAdapter
 
     private var _binding: FragmentTopHeadlinesBinding? = null
     private val binding get() = _binding!!
@@ -33,6 +35,17 @@ class TopHeadlinesFragment : Fragment() {
             layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
             setHasFixedSize(true)
         }
+
+        newsAdapter= NewsAdapter()
+        binding.rvNews.apply {
+            adapter=newsAdapter
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+            //setHasFixedSize(true)
+        }
+
+        viewModel.responseNews.observe(viewLifecycleOwner,{ news ->
+            newsAdapter.newsList = news.articles!!
+        })
 
 
     }

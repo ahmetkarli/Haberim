@@ -11,6 +11,8 @@
         android:layout_height="match_parent">
 
 
+
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
             style="@style/CustomCardViewStyle"
@@ -61,6 +63,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView"
            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvCategory" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
