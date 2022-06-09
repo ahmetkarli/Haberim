@@ -15,8 +15,7 @@
     </style>
 
 
-    <style name="Widget.BottomNavigationView"
-        parent="Widget.Design.BottomNavigationView">
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="fontFamily">@font/archivo</item>
         <item name="android:minHeight">0dp</item>
 
@@ -35,5 +34,10 @@
         <item name="cornerSizeBottomLeft">24dp</item>
     </style>
 
+    <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_image</item>
+        <item name="android:statusBarColor">@color/main</item>
+</style>
 
-</resources>
+
+    </resources>

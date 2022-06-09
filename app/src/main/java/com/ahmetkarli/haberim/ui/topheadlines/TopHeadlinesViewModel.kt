@@ -17,6 +17,8 @@ class TopHeadlinesViewModel
 @Inject
 constructor(private val repository: NewsRepository) : ViewModel() {
 
+    val isLoading=MutableLiveData<Boolean>()
+
     private val _response = MutableLiveData<NewsResponseModel>()
     val responseNews:LiveData<NewsResponseModel>
         get() = _response
@@ -29,6 +31,7 @@ constructor(private val repository: NewsRepository) : ViewModel() {
         repository.getNews().let { response ->
             if(response.isSuccessful){
                 _response.postValue(response.body())
+                isLoading.postValue(false)
             }else{
                 Log.d("TAG", "getAllNews error : ${response.code()} ")
             }
