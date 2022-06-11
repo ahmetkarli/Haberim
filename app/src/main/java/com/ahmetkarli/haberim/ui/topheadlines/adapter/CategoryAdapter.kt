@@ -7,11 +7,14 @@ import com.ahmetkarli.haberim.R
 import com.ahmetkarli.haberim.databinding.ItemNewsCategoryBinding
 
 
-class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(
+    private var onItemClicked: ((categoryName: String) -> Unit)
+) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
-    val categoryNameList = arrayListOf("Ekonomi","Magazin","Genel","Sağlık","Bilim","Spor","Teknoloji")
-    val categoryImageList = arrayListOf(R.drawable.category_business,R.drawable.category_entertainment,R.drawable.category_general,
-        R.drawable.category_health,R.drawable.category_science,R.drawable.category_sports,R.drawable.category_technology)
+    val categoryNameList = arrayListOf("Genel","Ekonomi","Spor","Sağlık","Teknoloji","Magazin","Bilim")
+    val categoryServiceName = arrayListOf("general","business","sports","health","technology","entertainment","science")
+    val categoryImageList = arrayListOf(R.drawable.category_general,R.drawable.category_business,R.drawable.category_sports,
+        R.drawable.category_health,R.drawable.category_technology,R.drawable.category_entertainment,R.drawable.category_science)
 
     inner class CategoryViewHolder(val binding: ItemNewsCategoryBinding):
         RecyclerView.ViewHolder(binding.root)
@@ -26,17 +29,15 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         var currentCategoryName=categoryNameList[position]
         var currentCategoryImage=categoryImageList[position]
+        var currentCategoryServiceName=categoryServiceName[position]
+
 
         holder.binding.apply {
             txtCategoryName.text =currentCategoryName
             profileImage.setImageResource(currentCategoryImage)
 
-            txtCategoryName.setOnClickListener {
-
-
-            }
-            profileImage.setOnClickListener {
-
+            root.setOnClickListener {
+                onItemClicked(currentCategoryServiceName)
             }
 
         }

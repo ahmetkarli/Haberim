@@ -13,6 +13,8 @@ interface ApiService {
         @Query("country")
         countryCode:String = Constants.COUNTRY_CODE,
         @Query("apiKey")
-        apiKey:String = Constants.API_KEY
+        apiKey:String = Constants.API_KEY,
+        @Query("category")
+        category:String = ""
     ):Response<NewsResponseModel>
 }

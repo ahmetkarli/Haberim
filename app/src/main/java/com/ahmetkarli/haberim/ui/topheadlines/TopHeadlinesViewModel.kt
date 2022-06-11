@@ -23,12 +23,10 @@ constructor(private val repository: NewsRepository) : ViewModel() {
     val responseNews:LiveData<NewsResponseModel>
         get() = _response
 
-    init {
-        getAllNews()
-    }
 
-    private fun getAllNews() =viewModelScope.launch{
-        repository.getNews().let { response ->
+
+    fun getAllNews(category:String) =viewModelScope.launch{
+        repository.getNews(category).let { response ->
             if(response.isSuccessful){
                 _response.postValue(response.body())
                 isLoading.postValue(false)

@@ -7,5 +7,5 @@ class NewsRepository
 @Inject
 constructor(private val apiService: ApiService){
 
-    suspend fun getNews()=apiService.getNews()
+    suspend fun getNews(category:String)=apiService.getNews(category=category)
 }
