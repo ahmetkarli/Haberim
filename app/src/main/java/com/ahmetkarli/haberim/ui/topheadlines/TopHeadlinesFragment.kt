@@ -5,13 +5,10 @@ import android.app.Service
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ahmetkarli.haberim.R
@@ -21,7 +18,6 @@ import com.ahmetkarli.haberim.helper.CommonUtils
 import com.ahmetkarli.haberim.helper.ConnectionLiveData
 import com.ahmetkarli.haberim.ui.topheadlines.adapter.CategoryAdapter
 import com.ahmetkarli.haberim.ui.topheadlines.adapter.NewsAdapter
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -118,7 +114,7 @@ class TopHeadlinesFragment : Fragment() {
     }
     private fun setupRv() {
 
-        categoryAdapter = CategoryAdapter{
+        categoryAdapter = CategoryAdapter(){
             showLoading()
             if(hasConnection()){
                 viewModel.getAllNews(it)
@@ -135,7 +131,8 @@ class TopHeadlinesFragment : Fragment() {
         }
 
         viewModel.getAllNews("")
-        newsAdapter = NewsAdapter()
+
+        newsAdapter = NewsAdapter(requireContext())
         binding.rvNews.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

@@ -9,10 +9,13 @@
         android:id="@+id/navigation_topHeadlines"
         android:name="com.ahmetkarli.haberim.ui.topheadlines.TopHeadlinesFragment"
         android:label="fragment_top_headlines"
-        tools:layout="@layout/fragment_top_headlines" >
+        tools:layout="@layout/fragment_top_headlines"
+        app:destination="@+id/newsDetailFragment">
+
         <action
             android:id="@+id/action_navigation_topHeadlines_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
+            app:destination="@id/newsDetailFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/navigation_explore"
@@ -32,5 +35,10 @@
         android:id="@+id/newsDetailFragment"
         android:name="com.ahmetkarli.haberim.ui.detail.NewsDetailFragment"
         android:label="fragment_news_detail"
-        tools:layout="@layout/fragment_news_detail" />
+        tools:layout="@layout/fragment_news_detail" >
+        <argument
+            android:name="url"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

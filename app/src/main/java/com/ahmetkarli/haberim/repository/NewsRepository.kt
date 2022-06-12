@@ -8,4 +8,5 @@ class NewsRepository
 constructor(private val apiService: ApiService){
 
     suspend fun getNews(category:String)=apiService.getNews(category=category)
+    suspend fun getNewsBySearch(q:String)=apiService.getNewsBySearch(q=q)
 }

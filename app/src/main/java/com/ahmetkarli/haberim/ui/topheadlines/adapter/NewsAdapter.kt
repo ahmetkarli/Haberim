@@ -1,18 +1,23 @@
 package com.ahmetkarli.haberim.ui.topheadlines.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.ahmetkarli.haberim.R
+import com.ahmetkarli.haberim.databinding.FragmentTopHeadlinesBinding
 import com.ahmetkarli.haberim.databinding.ItemNewsBinding
 import com.ahmetkarli.haberim.models.Article
-import com.ahmetkarli.haberim.models.NewsResponseModel
+import com.ahmetkarli.haberim.ui.topheadlines.TopHeadlinesFragmentDirections
 import com.bumptech.glide.Glide
 
 
-class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter(private var context: Context) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     inner class NewsViewHolder(val binding: ItemNewsBinding):
         RecyclerView.ViewHolder(binding.root)
@@ -53,12 +58,15 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             holder.binding.apply {
                 txtTitle.text=currentArticle.title
                 txtDate.text=dateFormat(currentArticle.publishedAt.toString())
-                imgArticle.load(currentArticle.urlToImage){
-                    crossfade(true)
-                    crossfade(1000)
+                currentArticle.urlToImage?.let {
+                    Glide.with(context).load(currentArticle.urlToImage).into(imgArticle)
                 }
-
             }
+        }
+
+        holder.binding.root.setOnClickListener {
+            val action = TopHeadlinesFragmentDirections.actionNavigationTopHeadlinesToNewsDetailFragment(currentArticle.url)
+            it.findNavController().navigate(action)
         }
 
     }

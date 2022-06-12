@@ -17,4 +17,15 @@ interface ApiService {
         @Query("category")
         category:String = ""
     ):Response<NewsResponseModel>
+
+    @GET(Constants.EVERYTHING)
+    suspend fun getNewsBySearch(
+        @Query("language")
+        language:String = Constants.LANGUAGE,
+        @Query("apiKey")
+        apiKey:String = Constants.API_KEY,
+        @Query("q")
+        q:String = ""
+    ):Response<NewsResponseModel>
+
 }

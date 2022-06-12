@@ -1,14 +1,16 @@
 package com.ahmetkarli.haberim.ui.topheadlines.adapter
 
+import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ahmetkarli.haberim.R
 import com.ahmetkarli.haberim.databinding.ItemNewsCategoryBinding
 
 
-class CategoryAdapter(
-    private var onItemClicked: ((categoryName: String) -> Unit)
+class CategoryAdapter(private var onItemClicked: ((categoryName: String) -> Unit)
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     val categoryNameList = arrayListOf("Genel","Ekonomi","Spor","Sağlık","Teknoloji","Magazin","Bilim")
