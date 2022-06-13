@@ -41,7 +41,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/archivo"
-                            android:text="Merhaba, Misafir Kullanıcı"
+                            android:text="Merhaba, Haberim'e Hoşgeldin !"
                             android:textColor="@color/white"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

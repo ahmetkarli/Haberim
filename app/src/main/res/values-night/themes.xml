@@ -16,7 +16,7 @@
 
     <style name="Widget.BottomNavigationView"
         parent="Widget.Design.BottomNavigationView">
-        <item name="fontFamily">@font/archivo</item>
+        <item name="fontFamily">@font/candal</item>
         <item name="android:minHeight">0dp</item>
 
     </style>
@@ -32,6 +32,10 @@
 
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="background">@android:color/transparent</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/candal</item>
     </style>
 
 </resources>

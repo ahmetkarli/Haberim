@@ -65,7 +65,7 @@ class NewsAdapter(private var context: Context) : RecyclerView.Adapter<NewsAdapt
         }
 
         holder.binding.root.setOnClickListener {
-            val action = TopHeadlinesFragmentDirections.actionNavigationTopHeadlinesToNewsDetailFragment(currentArticle.url)
+            val action = TopHeadlinesFragmentDirections.actionNavigationTopHeadlinesToNewsDetailFragment(currentArticle.url,currentArticle.title)
             it.findNavController().navigate(action)
         }
 
