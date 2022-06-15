@@ -1,13 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.explore.ExploreFragment">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Explore" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnGo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/candal"
+                    android:text="Git"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/txtPageNumber2"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
+
+                <TextView
+                    android:id="@+id/txtPageNumber2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/candal"
+                    android:textColor="@color/main"
+                    android:textSize="14sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/spinnerPageNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
+
+                <ImageView
+                    android:id="@+id/imgClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_clear_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/searchText" />
+
+                <EditText
+                    android:id="@+id/dateTo"
+                    android:focusableInTouchMode="false"
+                    android:inputType="date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/button_background"
+                    android:ems="10"
+                    android:fontFamily="@font/candal"
+                    android:hint="Bitiş Tarihi"
+                    android:padding="5dp"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:textColorLink="@color/white"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/dateFrom"
+                    app:layout_constraintTop_toBottomOf="@+id/searchText" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView"
+                    style="@style/CustomCardViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/main"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/txtName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/archivo"
+                            android:text="Keşfet'e Hoşgeldin !"
+                            android:textColor="@color/white"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/candal"
+                            android:text="Aradığın Bütün Haberler Burada"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtName" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <EditText
+                    android:id="@+id/searchText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/button_background"
+                    android:ems="10"
+                    android:fontFamily="@font/candal"
+                    android:hint=" Aranacak kelimeyi giriniz."
+                    android:inputType="textPersonName"
+                    android:padding="5dp"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:textColorLink="@color/white"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+                <EditText
+                    android:id="@+id/dateFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_background"
+                    android:ems="10"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/candal"
+                    android:hint="Başlangıç Tarihi"
+                    android:inputType="date"
+                    android:padding="5dp"
+                    android:shadowColor="@color/white"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:textColorLink="@color/white"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/imgClear"
+                    app:layout_constraintTop_toBottomOf="@+id/searchText" />
+
+                <Spinner
+                    android:id="@+id/spinnerSortBy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/button_background"
+                    android:padding="5dp"
+                    android:popupBackground="@drawable/button_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dateFrom"
+                    android:theme="@style/SpinnerTheme"/>
+
+                <Button
+                    android:id="@+id/btnSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Arama Yap"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerSortBy"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/candal"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNews"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnGo" />
+
+                <TextView
+                    android:id="@+id/txtSearchNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/candal"
+                    android:text="Arama Sonucu(0)"
+                    android:textColor="@color/main"
+                    android:textSize="14sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
+
+                <TextView
+                    android:id="@+id/txtPageNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/candal"
+                    android:text="Sayfa :"
+                    android:textColor="@color/main"
+                    android:textSize="14sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/txtSearchNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
+
+                <Spinner
+                    android:id="@+id/spinnerPageNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_background"
+                    android:padding="5dp"
+                    android:popupBackground="@drawable/button_background"
+                    android:theme="@style/SpinnerTheme"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/txtPageNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

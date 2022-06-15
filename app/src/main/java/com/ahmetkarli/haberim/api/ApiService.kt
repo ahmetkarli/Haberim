@@ -25,7 +25,15 @@ interface ApiService {
         @Query("apiKey")
         apiKey:String = Constants.API_KEY,
         @Query("q")
-        q:String = ""
+        q:String = "",
+        @Query("from")
+        from:String = "",
+        @Query("to")
+        to:String = "",
+        @Query("sortBy")
+        sortBy:String = "",
+        @Query("page")
+        page:Int=1
     ):Response<NewsResponseModel>
 
 }

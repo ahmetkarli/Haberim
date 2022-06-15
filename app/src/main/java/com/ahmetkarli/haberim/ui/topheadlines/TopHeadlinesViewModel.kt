@@ -24,7 +24,6 @@ constructor(private val repository: NewsRepository) : ViewModel() {
         get() = _response
 
 
-
     fun getAllNews(category:String) =viewModelScope.launch{
         repository.getNews(category).let { response ->
             if(response.isSuccessful){
