@@ -22,8 +22,10 @@ import com.ahmetkarli.haberim.databinding.FragmentNewsDetailBinding
 import com.ahmetkarli.haberim.databinding.LayoutBottomSheetBinding
 import com.ahmetkarli.haberim.helper.CommonUtils
 import com.ahmetkarli.haberim.helper.ConnectionLiveData
+import com.ahmetkarli.haberim.models.ArticleDbModel
 import com.ahmetkarli.haberim.ui.topheadlines.TopHeadlinesFragmentDirections
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,8 +51,9 @@ class NewsDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        val url = args.url.toString()
-        val title = args.title.toString()
+        val article = args.articleDb
+        val url = article.url
+        val title = article.title
 
         binding.toolbar.inflateMenu(R.menu.menu_toolbar)
         binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
@@ -62,7 +65,8 @@ class NewsDetailFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.action_fav-> {
-                    //TODO favoriler
+                    viewModel.saveArticle(ArticleDbModel(publishedAt = article.publishedAt, title = article.title, url = article.url, urlToImage = article.urlToImage))
+                    Snackbar.make(view,"Haber favorilere eklendi.",Snackbar.LENGTH_SHORT).show()
                     true
                 }
                 R.id.action_share-> {
@@ -98,7 +102,7 @@ class NewsDetailFragment : Fragment() {
     }
 
     private fun setupWebView() {
-        val url = args.url.toString()
+        val url = args.articleDb.url
         binding.webview.webViewClient = WebViewClient()
         binding.webview.loadUrl(url!!)
         url.let {

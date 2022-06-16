@@ -146,6 +146,7 @@ class ExploreFragment : Fragment() {
         })
 
         viewModel.responseNews.observe(viewLifecycleOwner) { result ->
+            binding.rvNews.visibility=View.VISIBLE
             binding.txtSearchNumber.visibility = View.VISIBLE
             binding.txtPageNumber.visibility = View.VISIBLE
             binding.txtPageNumber2.visibility = View.VISIBLE
@@ -176,6 +177,7 @@ class ExploreFragment : Fragment() {
                 if (hasConnection()) {
                     setupRv(page)
                 } else {
+                    hideLoading()
                     showBottomSheet("Lütfen internet bağlantınızı kontrol ediniz !")
                 }
             }
@@ -192,6 +194,7 @@ class ExploreFragment : Fragment() {
                 if (hasConnection()) {
                     setupRv(1)
                 } else {
+                    hideLoading()
                     showBottomSheet("Lütfen internet bağlantınızı kontrol ediniz !")
                 }
 

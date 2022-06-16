@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "475113775029",
+    "project_id": "haberim-4025d",
+    "storage_bucket": "haberim-4025d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475113775029:android:de571bef53c4f63bca03fc",
+        "android_client_info": {
+          "package_name": "com.ahmetkarli.haberim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475113775029-5iva46b4pi941a2fmn0je83nlf89rcfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvpnHyTHAapLp-itDF22-29bkuhUta83Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475113775029-5iva46b4pi941a2fmn0je83nlf89rcfi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

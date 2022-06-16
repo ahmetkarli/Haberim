@@ -9,13 +9,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ahmetkarli.haberim.R
 import com.ahmetkarli.haberim.databinding.FragmentTopHeadlinesBinding
 import com.ahmetkarli.haberim.databinding.LayoutBottomSheetBinding
 import com.ahmetkarli.haberim.helper.CommonUtils
 import com.ahmetkarli.haberim.helper.ConnectionLiveData
+import com.ahmetkarli.haberim.models.ArticleDbModel
 import com.ahmetkarli.haberim.ui.topheadlines.adapter.CategoryAdapter
 import com.ahmetkarli.haberim.ui.topheadlines.adapter.NewsAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog

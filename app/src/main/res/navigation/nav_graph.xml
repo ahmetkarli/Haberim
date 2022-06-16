@@ -30,19 +30,18 @@
         android:id="@+id/navigation_profile"
         android:name="com.ahmetkarli.haberim.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"
         android:name="com.ahmetkarli.haberim.ui.detail.NewsDetailFragment"
         android:label="fragment_news_detail"
         tools:layout="@layout/fragment_news_detail" >
         <argument
-            android:name="url"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="title"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="articleDb"
+            app:argType="com.ahmetkarli.haberim.models.ArticleDbModel" />
     </fragment>
 </navigation>

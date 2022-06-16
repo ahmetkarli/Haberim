@@ -13,6 +13,7 @@ import com.ahmetkarli.haberim.R
 import com.ahmetkarli.haberim.databinding.FragmentTopHeadlinesBinding
 import com.ahmetkarli.haberim.databinding.ItemNewsBinding
 import com.ahmetkarli.haberim.models.Article
+import com.ahmetkarli.haberim.models.ArticleDbModel
 import com.ahmetkarli.haberim.ui.topheadlines.TopHeadlinesFragmentDirections
 import com.bumptech.glide.Glide
 
@@ -65,7 +66,9 @@ class NewsAdapter(private var context: Context) : RecyclerView.Adapter<NewsAdapt
         }
 
         holder.binding.root.setOnClickListener {
-            val action = TopHeadlinesFragmentDirections.actionNavigationTopHeadlinesToNewsDetailFragment(currentArticle.url,currentArticle.title)
+            val action = TopHeadlinesFragmentDirections.actionNavigationTopHeadlinesToNewsDetailFragment(
+                ArticleDbModel(publishedAt = currentArticle.publishedAt, title = currentArticle.title, urlToImage = currentArticle.urlToImage, url = currentArticle.url)
+            )
             it.findNavController().navigate(action)
         }
 
@@ -77,7 +80,7 @@ class NewsAdapter(private var context: Context) : RecyclerView.Adapter<NewsAdapt
 
     private fun dateFormat(date:String):String{
        // 2022-06-08T07:58:38Z
-        val day = date.substring(8,10)
+        var day = date.substring(8,10).toInt()
         val month = date.substring(5,7)
         val year = date.substring(0,4)
         var hour = date.substring(11,13).toInt()
@@ -90,12 +93,12 @@ class NewsAdapter(private var context: Context) : RecyclerView.Adapter<NewsAdapt
                 23->hour=2
                 24->hour=3
             }
+            day += 1
         }
 
         val minute = date.substring(13,19)
-        val newDate = day+"-"+month+"-"+year+" "+hour+minute
 
-        return newDate
+        return "$day-$month-$year $hour$minute"
     }
 }
 
