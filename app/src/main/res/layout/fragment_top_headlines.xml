@@ -80,6 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/rvCategory" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </ScrollView>
 

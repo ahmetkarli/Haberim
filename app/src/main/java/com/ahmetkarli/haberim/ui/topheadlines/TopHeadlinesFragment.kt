@@ -24,6 +24,7 @@ import com.ahmetkarli.haberim.ui.topheadlines.adapter.CategoryAdapter
 import com.ahmetkarli.haberim.ui.topheadlines.adapter.NewsAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 @AndroidEntryPoint
 class TopHeadlinesFragment : Fragment() {
@@ -60,6 +61,9 @@ class TopHeadlinesFragment : Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner){
             if(!it){ hideLoading() }
         }
+
+
+
     }
     private fun hasConnection():Boolean{
         connectivity=requireContext().getSystemService(Service.CONNECTIVITY_SERVICE) as ConnectivityManager
