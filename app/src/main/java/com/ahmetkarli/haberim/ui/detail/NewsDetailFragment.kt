@@ -3,6 +3,7 @@ package com.ahmetkarli.haberim.ui.detail
 
 import android.app.Dialog
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -14,6 +15,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
@@ -253,6 +255,27 @@ class NewsDetailFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_toolbar, menu)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true)
+            {
+                override fun handleOnBackPressed() {
+
+                    if (mInterstitialAd != null) {
+                        mInterstitialAd?.show(requireActivity())
+                    } else {
+                        Log.d("TAG", "The interstitial ad wasn't ready yet.")
+                    }
+                    view?.findNavController()?.popBackStack()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
     }
 
 
